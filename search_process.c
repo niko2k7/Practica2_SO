@@ -10,7 +10,7 @@
 
 
 
-// Función de búsqueda (idéntica a la tuya)
+// Función de búsqueda 
 void search_movie(const char *csv_filename, const char *index_filename, const char *movie_name, char *output) {
     FILE *csv = fopen(csv_filename, "r");
     if (!csv) { perror("Error abriendo CSV"); return; }
@@ -75,7 +75,7 @@ int main() {
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(PORT);
-    server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");  // LOCALHOST
+    server_addr.sin_addr.s_addr = INADDR_ANY;  // LOCALHOST
 
     // Asociar socket a puerto
     r = bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr));
