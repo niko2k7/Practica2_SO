@@ -1,0 +1,16 @@
+#Compilados
+*.o
+*.out
+*.exe
+index_builder
+search_process
+ui_process
+
+#Dataset related
+Dataset/
+all_movies_heavy.csv
+hash_index.bin
+
+#Vscode related
+.vscode/
+
