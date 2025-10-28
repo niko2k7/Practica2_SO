@@ -14,6 +14,9 @@
 #define SEED 0xDEADBEEF        // semilla del hash
 #define CHAR_LENGTH 15
 
+#define PORT 3535
+#define BACKLOG 4
+
 #define MOVIE_NAME_SIZE 100
 #define RESULT_SIZE 8192
 #define NOT_READY 0

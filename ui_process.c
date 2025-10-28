@@ -12,14 +12,12 @@
 #include <arpa/inet.h>  // Para inet_addr
 
 
-#define PORT 3535
 
 
 int main(){
     key_t key = SHM_KEY_DATA;
     int shmid;
     SharedData shared;
-
 
     // -------------------------------------------------------------------------------
 
@@ -155,7 +153,7 @@ int main(){
                     movie[strlen(movie) - 1] = '\0';
                 }
 
-                // Usamos solo 10 caracteres
+                // Usamos solo 15 caracteres
                 int len = strlen(movie);
                 if (len>CHAR_LENGTH) len=CHAR_LENGTH;
 
@@ -175,6 +173,7 @@ int main(){
                     break;
                 }
                 printf("Movie:%s |Hash:%u |Index:%u \n", movie, hash, index_pos);
+
                 // Leer la entrada existente del bucket principal
                 IndexEntry current_bucket;
                 fseek(index, index_pos * sizeof(IndexEntry), SEEK_SET);

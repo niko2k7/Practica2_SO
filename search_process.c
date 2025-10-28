@@ -8,8 +8,7 @@
 
 #include "definitions.h"
 
-#define PORT 3535
-#define BACKLOG 4
+
 
 // Función de búsqueda (idéntica a la tuya)
 void search_movie(const char *csv_filename, const char *index_filename, const char *movie_name, char *output) {
@@ -80,16 +79,29 @@ int main() {
 
     // Asociar socket a puerto
     r = bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr));
-    if (r < 0) { perror("bind"); close(server_fd); return 1; }
+    if (r < 0) {
+        perror("Error server bind");
+        close(server_fd);
+        return 1;
+    }
 
     // Escuchar conexiones
     r = listen(server_fd, BACKLOG);
-    if (r < 0) { perror("listen"); close(server_fd); return 1; }
-    printf("Servidor TCP escuchando en el puerto %d...\n", PORT);
+    if (r < 0) {
+        perror("listen");
+        close(server_fd);
+        return 1;
+    }
+
+    printf("\nServidor TCP escuchando en el puerto %d...\n", PORT);
 
     // Esperar conexión
     client_fd = accept(server_fd, (struct sockaddr *)&client_addr, &client_size);
-    if (client_fd < 0) { perror("accept"); close(server_fd); return 1; }
+    if (client_fd < 0) {
+        perror("accept");
+        close(server_fd);
+        return 1;
+    }
     printf("Cliente conectado.\n");
 
     // Bucle principal
